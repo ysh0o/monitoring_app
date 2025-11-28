@@ -1,0 +1,13 @@
+[Unit]
+Description=Simple Flask Hello World app
+After=network.target
+
+[Service]
+WorkingDirectory=/opt/myapp
+ExecStart=/usr/bin/python3 /opt/myapp/app.py
+Restart=always
+User=root
+Group=root
+
+[Install]
+WantedBy=multi-user.target
