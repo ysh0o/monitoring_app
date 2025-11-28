@@ -1,15 +1,15 @@
 # myapp-monitor.timer - systemd-таймер для периодического запуска мониторинга
-# Запускает myapp-monitor.service каждые 30 секунд
+# Запускает myapp-monitor.service каждые 10 секунд
 
 [Unit]
-Description=Run MyApp monitor every 30 seconds
+Description=Run MyApp monitor every 10 seconds
 
 [Timer]
 # OnBootSec=10s: первый запуск через 10 секунд после загрузки системы
 OnBootSec=10s
 
-# OnUnitActiveSec=30s: интервал между запусками (каждые 30 секунд)
-OnUnitActiveSec=30s
+# OnUnitActiveSec=30s: интервал между запусками (каждые 10 секунд)
+OnUnitActiveSec=10s
 
 # RandomizedDelaySec=0: отключаем случайную задержку (для точности интервалов)
 RandomizedDelaySec=0
