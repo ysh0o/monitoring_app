@@ -1,10 +1,17 @@
+# myapp-monitor.service - systemd-сервис для запуска скрипта мониторинга
+
 [Unit]
 Description=Monitor MyApp web service
+# After=network-online.target: запустить только после поднятия сети
 After=network-online.target
 
 [Service]
+# Type=oneshot: сервис выполняется один раз (не вечно работающий процесс)
 Type=oneshot
+
+# Команда для запуска скрипта мониторинга
 ExecStart=/bin/bash /opt/myapp/monitor.sh
 
-[INSTALL]
+[Install]
+# WantedBy=multi-user.target: добавлять в автозапуск вместе с multi-user.target
 WantedBy=multi-user.target
