@@ -1,13 +1,27 @@
+# myapp.service - systemd-сервис для Flask-приложения
+# Управляет запуском, остановкой и автоматическим перезапуском приложения
+
 [Unit]
 Description=Simple Flask Hello World app
+# After=network.target: запустить только после поднятия сетевого интерфейса
 After=network.target
 
 [Service]
+# WorkingDirectory: рабочая папка, из которой запускается приложение
 WorkingDirectory=/opt/myapp
+
+# ExecStart: команда для запуска приложения
 ExecStart=/usr/bin/python3 /opt/myapp/app.py
+
+# Restart=always: автоматически перезапускать приложение при падении
 Restart=always
+
+# User=root: запускать под пользователем root (нужен для прав на porты)
 User=root
+
+# Group=root: группа пользователя
 Group=root
 
 [Install]
+# WantedBy=multi-user.target: добавляем в автозапуск при загрузке системы
 WantedBy=multi-user.target
